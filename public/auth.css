@@ -1,0 +1,129 @@
+:root {
+    --main-clr: #000000;
+    --second-clr: #ffffff;
+    --third-clr: #6200FF;
+}
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+
+}
+
+body{
+    font-family: 'Roboto', sans-serif;
+    min-height: 100vh;
+    overflow-y:scroll;
+    background-color: var(--main-clr);
+    color: var(--second-clr);
+}
+
+ul{
+    list-style: none;
+}
+
+a{
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.login-container{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: var(--main-clr);
+}
+
+.form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    border: 1px solid grey;
+    width: 400px;
+    padding: 50px;
+    min-height: 500px;
+    background-color: rgb(0, 0, 0);
+    border-radius: 10px;
+  }
+
+  .inputContainer {
+    background-color: rgba(255, 0, 0, 0);
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    width: 100%;
+    height: 100%;
+  }
+
+  .fInput {
+    width: 100%;
+    height: 50px;
+    border-radius: 3px;
+    border: 1px solid rgb(48, 45, 45);
+    background-color: black;
+    padding: 10px;
+    color: white;
+    transition: .1s;
+
+  }
+
+  .fInput:focus {
+    border: 1px var(--third-clr) solid;
+    outline: none;
+  }
+
+  .fInput:focus::placeholder {
+    color: var(--third-clr);
+  }
+
+
+
+
+
+  .login {
+    width: 100%;
+    color: white;
+    font-family: sans-serif;
+    font-weight: 700;
+    font-size: 30px;
+    padding: 30px 0;
+    top: 90px;
+    left: 55px
+  }
+
+
+  .button {
+    width: 100%;
+    background-color: transparent;
+    color: white;
+    border: 1PX solid rgba(255, 255, 255, 0.151);
+    padding: 7px 0;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: .3s;
+    margin-top: 10px;
+  }
+
+  .button:hover {
+    background-color: rgba(255, 255, 255, 0.151);
+  }
+
+  .con {
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+    margin-top: 30px;
+    color: rgb(111, 103, 103);
+    font-size: 13px;
+    font-family: sans-serif;
+    background-color: rgba(255, 0, 0, 0);
+  }
+
+  .con a {
+    color: var(--third-clr);
+  }
