@@ -74,52 +74,6 @@
                 </div>
             </div>
         </div>
-    </div> <div class="post-container">
-        <div class="post-profile">
-            <img src="profile.jpg" alt="" class="post-profile-img">
-            <div class="post-profile-info">
-                <p class="post-profile-name">hmad</p>
-                <p class="post-profile-username">redwodoriginal</p>
-                <p class="post-profile-time">.2h</p>
-            </div>
-        </div>
-        <div class="post-info">
-            <div class="post-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum nihil dignissimos, quam voluptatibus cum </div>
-            <div class="post-img"><img src="profile.jpg" alt=""></div>
-            <div class="like-cmnt">
-                <div class="likes">
-                    <i class="fa-regular fa-heart"></i>
-                    <p class="likes-num">1000</p>
-                </div>
-                <div class="cmnts">
-                    <i class="fa-regular fa-comment"></i>
-                    <p class="cmnts-num">1000</p>
-                </div>
-            </div>
-        </div>
-    </div> <div class="post-container">
-        <div class="post-profile">
-            <img src="profile.jpg" alt="" class="post-profile-img">
-            <div class="post-profile-info">
-                <p class="post-profile-name">hmad</p>
-                <p class="post-profile-username">redwodoriginal</p>
-                <p class="post-profile-time">.2h</p>
-            </div>
-        </div>
-        <div class="post-info">
-            <div class="post-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum nihil dignissimos, quam voluptatibus cum </div>
-            <div class="post-img"><img src="maxresdefault.jpg" alt=""></div>
-            <div class="like-cmnt">
-                <div class="likes">
-                    <i class="fa-regular fa-heart"></i>
-                    <p class="likes-num">1000</p>
-                </div>
-                <div class="cmnts">
-                    <i class="fa-regular fa-comment"></i>
-                    <p class="cmnts-num">1000</p>
-                </div>
-            </div>
-        </div>
-    </div>
+    </div> 
 
 </div>
