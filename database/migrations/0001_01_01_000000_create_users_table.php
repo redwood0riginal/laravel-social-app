@@ -13,19 +13,15 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->uuid("uuid");
-            $table->string('full_name')->nullable();
-            $table->string('username')->nullable();
-            $table->string('email')->nullable()->unique();
-            $table->string('mobile')->nullable()->unique();
-            $table->string('mobile_verification_code')->nullable();
+            $table->string('full_name');
+            $table->string('username')->default('user');
+            $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
-            $table->timestamp('mobile_verified_at')->nullable();
             $table->text("description")->nullable();
             $table->string("thumbnail"  )->nullable();
             $table->string("profile")->nullable();
-            $table->enum("gender",["male","female"]);
-            $table->enum("relationship",["single","married","engaged"]);
+            $table->enum("gender",["male","female"])->nullable();
+            $table->enum("relationship",["single","married","engaged"])->nullable();
             $table->string("location")->nullable();
             $table->string("address")->nullable();
             $table->boolean("is_private")->default(0);

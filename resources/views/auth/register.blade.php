@@ -17,7 +17,7 @@
         <form class="form" action="register" method="post">
             @csrf
             <div>
-                @error('name')
+                @error('full_name')
                     {{$message}}
                 @enderror
             </div>
@@ -33,7 +33,7 @@
             </div>
             <p class="login">JOIN NOW!!</p>
             <div class="inputContainer">
-                <input placeholder="Name" name="name" type="text" class="fInput ">
+                <input placeholder="Name" name="full_name" type="text" class="fInput ">
                 <input placeholder="Email" name="email" type="email" class="fInput ">
                 <input placeholder="Password" name="password" type="password" class="fInput ">
                 <input placeholder="Confirm password" name="password_confirmation" type="password" class="fInput ">
