@@ -15,6 +15,13 @@
             <img src="logo-slogan.png" alt="">
         </div>
         <form class="form" action="/login" method="post">
+            @if (session()->has('error'))
+                <div>
+                    <div>
+                        {{session('error')}}
+                    </div>
+                </div>
+            @endif
             @csrf
             <p class="login">Log in to Holazomi</p>
             <div class="inputContainer">

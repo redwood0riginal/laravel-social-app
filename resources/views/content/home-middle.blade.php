@@ -1,3 +1,5 @@
+@extends('layouts.sidebars')
+@section('content')
 <div class="middle-section">
     <div class="top-page">
         <a href="" class="foryou">For you</a>
@@ -55,7 +57,7 @@
         <div class="post-profile">
             <img src="profile.jpg" alt="" class="post-profile-img">
             <div class="post-profile-info">
-                <p class="post-profile-name">{{auth()->user()->name}}</p>
+                <p class="post-profile-name">{{auth()->user()->full_name}}</p>
                 <p class="post-profile-username">{{auth()->user()->username}}</p>
                 <p class="post-profile-time">.2h</p>
             </div>
@@ -74,6 +76,8 @@
                 </div>
             </div>
         </div>
-    </div> 
+    </div>
 
 </div>
+
+@endsection

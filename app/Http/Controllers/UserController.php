@@ -9,7 +9,7 @@ class UserController extends Controller
 {
     public function register(Request $request){
         $formFields = $request->validate([
-            'name' => ['required', 'max:20'],
+            'full_name' => ['required'],
             'email' => ['required', 'email', 'unique:users,email'],
             'password' => ['required', 'min:8', 'confirmed']
         ]);
@@ -29,7 +29,7 @@ class UserController extends Controller
             $request->session()->regenerate();
             return redirect('/')->with('success', 'Loged in successfully!!');
         }else{
-            return "wrong credentials";
+            return redirect('login-form')->with('error', 'wrong email or password');
         }
 
     }

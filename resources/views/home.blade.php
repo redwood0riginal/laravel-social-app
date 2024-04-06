@@ -19,9 +19,7 @@
         </div>
     @endif
 
-    @extends('layouts.sidebar')
     @extends('content.home-middle')
-    @extends('layouts.right-bar')
 </body>
 </html>
 
