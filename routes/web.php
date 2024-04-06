@@ -5,14 +5,11 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function(){
     return view('home');
-});
+})->middleware('mustBeLogedIn');
 
-Route::get('/login-form', function () {
-    return view('auth.login');
-});
-Route::get('/register-form', function () {
-    return view('auth.register');
-});
 
+// user related routes
+Route::get('/register-form', [UserController::class, 'registerForm']);
+Route::get('/login-form', [UserController::class, 'loginForm']);
 Route::post('/register', [UserController::class, 'register']);
 Route::post('/login', [UserController::class, 'login']);

@@ -7,7 +7,17 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
-    public function register(Request $request){
+    public function registerForm()
+    {
+        return view('auth.register');
+    }
+
+    public function loginForm()
+    {
+        return view('auth.login');
+    }
+    public function register(Request $request)
+    {
         $formFields = $request->validate([
             'full_name' => ['required'],
             'email' => ['required', 'email', 'unique:users,email'],
@@ -15,22 +25,23 @@ class UserController extends Controller
         ]);
 
         $formFields['password'] = bcrypt($formFields['password']);
-        User::create($formFields);
+        $user = User::create($formFields);
+        auth()->login($user);
         return redirect('/')->with('success', 'user successfully created');
     }
 
-    public function login(Request $request){
+    public function login(Request $request)
+    {
         $formFields = $request->validate([
             'userEmail' => 'required',
             'userPassword' => 'required'
         ]);
 
-        if(auth()->attempt(['email'=>$formFields['userEmail'], 'password'=>$formFields['userPassword']])) {
+        if (auth()->attempt(['email' => $formFields['userEmail'], 'password' => $formFields['userPassword']])) {
             $request->session()->regenerate();
             return redirect('/')->with('success', 'Loged in successfully!!');
-        }else{
+        } else {
             return redirect('login-form')->with('error', 'wrong email or password');
         }
-
     }
 }
