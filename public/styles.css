@@ -352,6 +352,7 @@ a{
     margin-top: -35px;
     margin-bottom: 10px;
     width: 100%;
+    word-wrap: break-word;
 }
 
 .post-container .post-info .post-img{
@@ -384,12 +385,11 @@ a{
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 0 10px;
+    min-width: 5px;
+    margin: 0 3px;
 }
 
-.post-container .post-info .like-cmnt .cmnts{
-    margin-left:40px;
-}
+
 
 .post-container .post-info .like-cmnt  .likes-num,.cmnts-num{
     margin:0 5px;

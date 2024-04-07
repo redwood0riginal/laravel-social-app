@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId("user_id")->constrained()->cascadeOnDelete();
             $table->longText("content");
+            $table->string("media")->nullable();
             $table->boolean("is_public")->default(1);
             $table->enum("status", ["published", "pending", "rejected"])->default("pending");
             $table->unsignedBigInteger("likes")->default(0);

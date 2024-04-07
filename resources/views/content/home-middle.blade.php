@@ -11,9 +11,10 @@
             <img src="profile.jpg" alt="">
         </div>
         <div class="form-inputs">
-            <form action="">
+            <form action="/create-post" method="post" enctype="multipart/form-data">
+                @csrf
                 <div class="input-wrapper">
-                    <input class="input-box" type="text" placeholder="What's on your mind?!">
+                    <input class="input-box" type="text" name="content" placeholder="What's on your mind?!">
                     <span class="underline"></span>
                 </div>
 
@@ -29,10 +30,10 @@
                             </g>
                         </svg>
                     </div>
-                    <input id="file" type="file">
+                    <input id="file" name="media" type="file">
                 </label>
 
-                <button class="button">
+                <button class="button" type="submit">
 
 
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
@@ -53,30 +54,36 @@
     </div>
 
 
-    <div class="post-container">
-        <div class="post-profile">
-            <img src="profile.jpg" alt="" class="post-profile-img">
-            <div class="post-profile-info">
-                <p class="post-profile-name">{{auth()->user()->full_name}}</p>
-                <p class="post-profile-username">{{auth()->user()->username}}</p>
-                <p class="post-profile-time">.2h</p>
-            </div>
-        </div>
-        <div class="post-info">
-            <div class="post-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum nihil dignissimos, quam voluptatibus cum </div>
-            <div class="post-img"><img src="profile.jpg" alt=""></div>
-            <div class="like-cmnt">
-                <div class="likes">
-                    <i class="fa-regular fa-heart"></i>
-                    <p class="likes-num">1000</p>
+@if(isset($posts) && count($posts) > 0)
+@foreach ($posts as $post)
+        <div class="post-container">
+                <div class="post-profile">
+                    <img src="profile.jpg" alt="" class="post-profile-img">
+                    <div class="post-profile-info">
+                        <p class="post-profile-name">{{auth()->user()->full_name}}</p>
+                        <p class="post-profile-username">{{auth()->user()->username}}</p>
+                        <p class="post-profile-time">.2h</p>
+                    </div>
                 </div>
-                <div class="cmnts">
-                    <i class="fa-regular fa-comment"></i>
-                    <p class="cmnts-num">1000</p>
+                <div class="post-info">
+                    <div class="post-text">{{$post->content}}</div>
+                    @if ($post->media)
+                    <div class="post-img"><img src="storage/postImages/{{$post->media}}" alt=""></div>
+                    @endif
+                    <div class="like-cmnt">
+                        <div class="likes">
+                            <i class="fa-regular fa-heart"></i>
+                            <p class="likes-num">{{$post->likes}}</p>
+                        </div>
+                        <div class="cmnts">
+                            <i class="fa-regular fa-comment"></i>
+                            <p class="cmnts-num">{{$post->comments}}</p>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </div>
+@endforeach
+@endif
 
 </div>
 
