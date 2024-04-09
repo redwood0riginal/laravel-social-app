@@ -1,4 +1,4 @@
-
+<x-layout>
 <div class="middle-section">
     <div class="top-page">
         <a href="" class="foryou">For you</a>
@@ -7,7 +7,7 @@
 
     <div class="form-contro">
         <div class="form-img">
-            <img src="profile.jpg" alt="">
+            <a href="/profile/{{auth()->id()}}"><img src="storage/profileImages/{{auth()->user()->profile}}" alt=""></a>
         </div>
         <div class="form-inputs">
             <form action="/create-post" method="post" enctype="multipart/form-data">
@@ -57,17 +57,17 @@
 @foreach ($posts as $post)
         <div class="post-container">
                 <div class="post-profile">
-                    <img src="storage/profileImages/{{auth()->user()->profile}}" alt="" class="post-profile-img">
+                    <a href="profile/{{$post->user_id}}"> <img src="{{ asset('storage/profileImages/' . $post->user->profile) }}" alt="" class="post-profile-img"></a>
                     <div class="post-profile-info">
-                        <p class="post-profile-name">{{auth()->user()->full_name}}</p>
-                        <p class="post-profile-username">{{auth()->user()->username}}</p>
-                        <p class="post-profile-time">.{{auth()->user()->created_at}}</p>
+                        <a href="profile/{{$post->user_id}}"><p class="post-profile-name">{{$post->user->full_name}}</p></a>
+                        <a href="profile/{{$post->user_id}}"><p class="post-profile-username">{{ '@' }}{{$post->user->username}}</p></a>
+                        <p class="post-profile-time">{{$post->user->created_at->format('D-m-y')}}</p>
                     </div>
                 </div>
                 <div class="post-info">
                     <div class="post-text">{{$post->content}}</div>
                     @if ($post->media)
-                    <div class="post-img"><img src="storage/postImages/{{$post->media}}" alt=""></div>
+                    <div class="post-img"><img src="{{asset('storage/postImages/' . $post->media)}}" alt=""></div>
                     @endif
                     <div class="like-cmnt">
                         <div class="likes">
@@ -86,3 +86,4 @@
 
 
 
+</x-layout>

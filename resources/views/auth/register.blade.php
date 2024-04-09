@@ -22,6 +22,11 @@
                 @enderror
             </div>
             <div>
+                @error('username')
+                    {{$message}}
+                @enderror
+            </div>
+            <div>
                 @error('email')
                     {{$message}}
                 @enderror
@@ -34,6 +39,7 @@
             <p class="login">JOIN NOW!!</p>
             <div class="inputContainer">
                 <input placeholder="Name" name="full_name" type="text" class="fInput ">
+                <input placeholder="Username" name="username" type="text" class="fInput ">
                 <input placeholder="Email" name="email" type="email" class="fInput ">
                 <input placeholder="Password" name="password" type="password" class="fInput ">
                 <input placeholder="Confirm password" name="password_confirmation" type="password" class="fInput ">

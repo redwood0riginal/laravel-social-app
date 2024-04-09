@@ -1,3 +1,5 @@
+<x-layout>
+
 <div class="profile-container-form">
 <section class="profile-form-container">
     <header>Update your information</header>
@@ -38,20 +40,20 @@
         </div>
         <div class="input-box">
             <label>Full Name</label>
-            <input placeholder="Enter your name" type="text" name="full_name">
+            <input placeholder="Enter your name" type="text" name="full_name"  value="{{auth()->user()->full_name}}">
         </div>
         <div class="input-box">
             <label>Username</label>
-            <input placeholder="Enter a username" type="text" name="username">
+            <input placeholder="Enter a username" type="text" name="username" value="{{auth()->user()->username}}">
         </div>
         <div class="input-box desc">
             <label>Bio</label>
-            <input placeholder="max:255" type="text" name="description">
+            <input placeholder="max:255" type="text" name="description" value="{{auth()->user()->description }}">
         </div>
         <div class="column">
             <div class="input-box">
                 <label>Birth Date</label>
-                <input placeholder="Enter birth date" type="date" name="birthdate">
+                <input placeholder="Enter birth date" type="date" name="birthdate" value="{{auth()->user()->birthdate}}">
             </div>
         </div>
         <div class="gender-box">
@@ -69,9 +71,12 @@
         </div>
         <div class="input-box address">
             <label>Address</label>
-            <input placeholder="Enter street address" name="address" type="text">
+            <input placeholder="Enter street address" name="address" type="text" value="{{auth()->user()->address}}">
         </div>
         <button>Save</button>
     </form>
 </section>
 </div>
+
+
+</x-layout>

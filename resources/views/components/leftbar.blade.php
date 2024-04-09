@@ -19,13 +19,13 @@
         <li><a href=""><i class="fa-solid fa-people-group"></i>
                 <p>Groupes</p>
             </a></li>
-        <li><a href="profile"><i class="fa-regular fa-user"></i>
+        <li><a href="profile/{{auth()->id()}}"><i class="fa-regular fa-user"></i>
                 <p>Profile</p>
             </a></li>
         <li><a href="">Post</a></li>
     </ul>
     <div class="sidebar-profile">
-        <img src="profile.jpg" alt="">
+        <img src="{{ asset('storage/profileImages/' . auth()->user()->profile) }}" alt="">
         <div class="sidebar-profile-info">
             <p class="name">{{auth()->user()->full_name}}</p>
             <p class="username">{{auth()->user()->username}}</p>

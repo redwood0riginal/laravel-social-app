@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Post;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class UserController extends Controller
 {
@@ -20,6 +22,7 @@ class UserController extends Controller
     {
         $formFields = $request->validate([
             'full_name' => ['required'],
+            'username' => ['required'],
             'email' => ['required', 'email', 'unique:users,email'],
             'password' => ['required', 'min:8', 'confirmed']
         ]);
@@ -45,24 +48,26 @@ class UserController extends Controller
         }
     }
 
-    public function showProfile(User $user) {
-        return view('layouts.layout', compact('user'));
+    public function showProfile(User $user, Post $post) {
+
+        $posts = Post::where('user_id', auth()->id())->orderBy('created_at', 'desc')->get();
+        return view('content.profile', compact('posts', 'user'));
     }
 
     public function showProfileForm(User $user){
         if ($user->id !== auth()->id()) {
             abort(403, 'Unauthorized action.');
         }
-        return view('layouts.layout', compact('user'));
+        return view('content.profile-form', compact('user'));
     }
 
     public function update(Request $request, User $user)
 {
     $formFields = $request->validate([
-        'full_name' => ['required'],
-        'username' => ['required'],
-        'thumbnail' => ['mimes:jpeg,png,jpg,gif'],
-        'profile'=> ['mimes:jpeg,png,jpg,gif'],
+        'full_name' => [''],
+        'username' => [Rule::unique('users')->ignore($user),],
+        'thumbnail' => ['mimes:jpeg,png,jpg'],
+        'profile'=> ['mimes:jpeg,png,jpg'],
         'description' => ['max:255'],
         'birthdate' => ['date'],
         'gender' => 'required|in:male,female',
@@ -91,7 +96,7 @@ class UserController extends Controller
     // Update user profile
     $user->update($formFields);
 
-    return redirect('/profile')->with('success', 'Profile successfully updated');
+    return redirect('/profile/' . $user->id)->with('success', 'Profile successfully updated');
 }
 
 }

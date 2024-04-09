@@ -32,6 +32,7 @@ class User extends Authenticatable
         'is_private',
         'is_banned',
         'password',
+        'birthdate'
     ];
 
 

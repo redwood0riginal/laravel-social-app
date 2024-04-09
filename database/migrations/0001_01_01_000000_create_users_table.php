@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->string('full_name');
-            $table->string('username')->default('user');
+            $table->string('username')->unique();
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->text("description")->nullable();
@@ -27,6 +27,7 @@ return new class extends Migration
             $table->boolean("is_private")->default(0);
             $table->boolean("is_banned")->default(0);
             $table->string('password');
+            $table->date('birthdate')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

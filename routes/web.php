@@ -20,7 +20,7 @@ Route::post('/create-post', [PostController::class, 'store']);
 Route::get('/', [PostController::class, 'index'])->middleware('mustBeLogedIn')->name('home');
 
 // profile related routes
-Route::get('/profile', [UserController::class, 'showProfile'])->name('profile')->middleware('mustBeLogedIn');
+Route::get('/profile/{user}', [UserController::class, 'showProfile'])->name('profile')->middleware('mustBeLogedIn');
 Route::get('/profile-form/{user}/edit', [UserController::class, 'showProfileForm'])->middleware('mustBeLogedIn')->name('profile.edit');
 Route::put('/profile/{user}', [UserController::class, 'update'])->name('profile.update');
 
