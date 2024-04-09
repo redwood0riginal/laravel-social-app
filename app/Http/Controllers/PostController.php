@@ -4,8 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
-use Intervention\Image\Facades\Image;
 
 class PostController extends Controller
 {
@@ -39,7 +37,7 @@ class PostController extends Controller
 
     public function index(){
         $posts = Post::orderBy('created_at', 'desc')->get();
-        return view('home', compact('posts'));
+        return view('layouts.layout', compact('posts'));
     }
 
 }

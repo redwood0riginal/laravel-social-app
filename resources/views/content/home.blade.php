@@ -1,5 +1,4 @@
-@extends('layouts.sidebars')
-@section('content')
+
 <div class="middle-section">
     <div class="top-page">
         <a href="" class="foryou">For you</a>
@@ -58,11 +57,11 @@
 @foreach ($posts as $post)
         <div class="post-container">
                 <div class="post-profile">
-                    <img src="profile.jpg" alt="" class="post-profile-img">
+                    <img src="storage/profileImages/{{auth()->user()->profile}}" alt="" class="post-profile-img">
                     <div class="post-profile-info">
                         <p class="post-profile-name">{{auth()->user()->full_name}}</p>
                         <p class="post-profile-username">{{auth()->user()->username}}</p>
-                        <p class="post-profile-time">.2h</p>
+                        <p class="post-profile-time">.{{auth()->user()->created_at}}</p>
                     </div>
                 </div>
                 <div class="post-info">
@@ -85,6 +84,5 @@
 @endforeach
 @endif
 
-</div>
 
-@endsection
+
