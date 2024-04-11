@@ -18,6 +18,8 @@ Route::post('/login', [UserController::class, 'login']);
 // post related routes
 Route::post('/create-post', [PostController::class, 'store']);
 Route::get('/', [PostController::class, 'index'])->middleware('mustBeLogedIn')->name('home');
+Route::delete('/delete-post/{post}', [PostController::class, 'destroy'])->middleware('mustBeLogedIn')->name('post.delete');
+
 
 // profile related routes
 Route::get('/profile/{user}', [UserController::class, 'showProfile'])->name('profile')->middleware('mustBeLogedIn');

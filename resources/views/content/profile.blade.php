@@ -16,7 +16,7 @@
             </div>
             <div class="profile-img-edit-btn-container">
                 <div class="profile-image">
-                    <img src="{{  asset($user->profile) }}" alt="">
+                    <img src="{{ asset($user->profile) }}" alt="">
                 </div>
                 @if ($user->id == auth()->id())
                     <div class="edit-profile">
@@ -57,14 +57,24 @@
         @foreach ($posts as $post)
             <div class="post-container">
                 <div class="post-profile">
-                    <img src="{{  asset($post->user->profile) }}" alt=""
-                        class="post-profile-img">
+                    <img src="{{ asset($post->user->profile) }}" alt="" class="post-profile-img">
                     <div class="post-profile-info">
                         <p class="post-profile-name">{{ $post->user->full_name }}</p>
                         <p class="post-profile-username">{{ '@' }}{{ $post->user->username }}</p>
                         <p class="post-profile-time">{{ $post->created_at->format('D-m-y') }}</p>
                     </div>
+                    @if ($user->id == auth()->id())
+                        <div class="delete-btn">
+                            <form method="POST" action="{{ route('post.delete', $post->id) }}">
+                                @csrf
+                                @method('delete')
+                                <button type="submit"><i class="fa-solid fa-xmark"></i></button>
+                            </form>
+                        </div>
+                    @endif
                 </div>
+
+
                 <div class="post-info">
                     <div class="post-text">{{ $post->content }}</div>
                     @if ($post->media)

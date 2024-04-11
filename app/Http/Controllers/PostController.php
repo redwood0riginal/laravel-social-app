@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
@@ -40,4 +41,12 @@ class PostController extends Controller
         return view('content.home', compact('posts'));
     }
 
+
+    public function destroy(Post $post, User $user){
+        if ($post->user_id !== auth()->id()) {
+            abort(403, 'Unauthorized action.');
+        }
+        $post = Post::where('id', $post->id)->firstOrFail();
+        $post->delete();
+        return back()->with('success', 'post successfully deleted');    }
 }

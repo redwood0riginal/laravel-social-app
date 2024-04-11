@@ -730,7 +730,28 @@ input:-webkit-autofill:active {
     background-color: rgba(128, 128, 128, 0.11);
 }
 
+.profile-section .post-container .post-profile .delete-btn{
+    position: absolute;
+    right: 50px;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
+.profile-section .post-container .post-profile .delete-btn form button{
+    width: 30px;
+    height: 30px;
+    background: 0;
+    cursor: pointer;
+
+
+}
+.profile-section .post-container .post-profile .delete-btn form button i{
+   font-size: 20px;
+   color: red;
+}
 /* profile form styles */
 .profile-container-form{
     position: absolute;

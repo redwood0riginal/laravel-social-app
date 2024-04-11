@@ -63,43 +63,57 @@ class UserController extends Controller
     }
 
     public function update(Request $request, User $user)
-{
-    $formFields = $request->validate([
-        'full_name' => [''],
-        'username' => [Rule::unique('users')->ignore($user),],
-        'thumbnail' => 'mimes:jpeg,png,jpg|max:8000',
-        'profile'=> 'mimes:jpeg,png,jpg|max:8000',
-        'description' => ['max:255'],
-        'birthdate' => ['date'],
-        'gender' => 'required|in:male,female',
-        'address' => [""],
-    ]);
+    {
+        // Validate the request data
+        $formFields = $request->validate([
+            'full_name' => '',
+            'username' => [Rule::unique('users')->ignore($user)],
+            'description' => 'max:255',
+            'birthdate' => 'date',
+            'gender' => 'required|in:male,female',
+            'address' => '',
+        ]);
 
-    // Ensure the authenticated user can only update their own profile
-    if ($user->id !== auth()->id()) {
-        abort(403, 'Unauthorized action.');
+        // Ensure the authenticated user can only update their own profile
+        if ($user->id !== auth()->id()) {
+            abort(403, 'Unauthorized action.');
+        }
+
+        // Handle Thumbnail Image
+        if ($request->hasFile('thumbnail')) {
+            $request->validate([
+                'thumbnail' => 'image|mimes:jpeg,png,jpg|max:8000',
+            ]);
+
+            // Generate a unique filename for the thumbnail image
+            $thumbnailName = $user->id . '-' . uniqid() . '.' . $request->file('thumbnail')->getClientOriginalExtension();
+
+            // Store the thumbnail image
+            $thumbnailPath = $request->file('thumbnail')->storeAs('public/thumbnailImages', $thumbnailName);
+
+            $user->thumbnail = $thumbnailName;
+        }
+
+        // Handle Profile Image
+        if ($request->hasFile('profile')) {
+            $request->validate([
+                'profile' => 'image|mimes:jpeg,png,jpg|max:8000',
+            ]);
+
+            // Generate a unique filename for the profile image
+            $profileName = $user->id . '-' . uniqid() . '.' . $request->file('profile')->getClientOriginalExtension();
+
+            // Store the profile image
+            $profilePath = $request->file('profile')->storeAs('public/profileImages', $profileName);
+
+            $user->profile = $profileName;
+        }
+
+        // Update user profile
+        $user->update($formFields);
+
+        return redirect('/profile/' . $user->id)->with('success', 'Profile successfully updated');
     }
 
-
-        // Delete old thumbnail and profile images
-    if ($request->hasFile('thumbnail') && $request->hasFile('profile')) {
-        // Check if media content is uploaded
-        $thumbnailname = $user->id . '-' . uniqid() . '.' . $request->file('thumbnail')->getClientOriginalExtension();
-        $profilename = $user->id . '-' . uniqid() . '.' . $request->file('profile')->getClientOriginalExtension();
-
-        // Store the media content
-        $request->file('thumbnail')->storeAs('public/thumbnailImages', $thumbnailname);
-        $request->file('profile')->storeAs('public/profileImages', $profilename);
-
-        // Update the media content filename in the form fields
-        $formFields['thumbnail'] = $thumbnailname;
-        $formFields['profile'] = $profilename;
-    }
-
-    // Update user profile
-    $user->update($formFields);
-
-    return redirect('/profile/' . $user->id)->with('success', 'Profile successfully updated');
-}
 
 }
