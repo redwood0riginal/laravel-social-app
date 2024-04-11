@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Post;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rule;
 
 class UserController extends Controller
@@ -50,7 +51,7 @@ class UserController extends Controller
 
     public function showProfile(User $user, Post $post) {
 
-        $posts = Post::where('user_id', auth()->id())->orderBy('created_at', 'desc')->get();
+        $posts = Post::where('user_id', $user->id)->orderBy('created_at', 'desc')->get();
         return view('content.profile', compact('posts', 'user'));
     }
 
@@ -66,8 +67,8 @@ class UserController extends Controller
     $formFields = $request->validate([
         'full_name' => [''],
         'username' => [Rule::unique('users')->ignore($user),],
-        'thumbnail' => ['mimes:jpeg,png,jpg'],
-        'profile'=> ['mimes:jpeg,png,jpg'],
+        'thumbnail' => 'mimes:jpeg,png,jpg|max:8000',
+        'profile'=> 'mimes:jpeg,png,jpg|max:8000',
         'description' => ['max:255'],
         'birthdate' => ['date'],
         'gender' => 'required|in:male,female',
@@ -79,8 +80,10 @@ class UserController extends Controller
         abort(403, 'Unauthorized action.');
     }
 
-    // Check if media content is uploaded
+
+        // Delete old thumbnail and profile images
     if ($request->hasFile('thumbnail') && $request->hasFile('profile')) {
+        // Check if media content is uploaded
         $thumbnailname = $user->id . '-' . uniqid() . '.' . $request->file('thumbnail')->getClientOriginalExtension();
         $profilename = $user->id . '-' . uniqid() . '.' . $request->file('profile')->getClientOriginalExtension();
 

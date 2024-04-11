@@ -12,11 +12,11 @@
         </div>
         <div class="user-profile-container">
             <div class="thumbnail">
-                <img src="{{ asset('storage/thumbnailImages/' . auth()->user()->thumbnail) }}" alt="">
+                <img src="{{ asset($user->thumbnail) }}" alt="">
             </div>
             <div class="profile-img-edit-btn-container">
                 <div class="profile-image">
-                    <img src="{{ asset('storage/profileImages/' . auth()->user()->profile) }}" alt="">
+                    <img src="{{  asset($user->profile) }}" alt="">
                 </div>
                 @if ($user->id == auth()->id())
                     <div class="edit-profile">
@@ -26,20 +26,20 @@
             </div>
             <div class="information-user">
                 <div class="user-info">
-                    <p class="user-name">{{ auth()->user()->full_name }}</p>
-                    <p class="user-username">{{ auth()->user()->username }}</p>
+                    <p class="user-name">{{ $user->full_name }}</p>
+                    <p class="user-username">{{ $user->username }}</p>
                 </div>
                 <div class="description">
-                    <p>{{ auth()->user()->description }}</p>
+                    <p>{{ $user->description }}</p>
                 </div>
                 <div class="dates">
                     <div class="birthdate"><i class="fa-solid fa-cake-candles"></i>
                         <p>Born
-                            {{ auth()->user()->birthdate ? \Carbon\Carbon::parse(auth()->user()->birthdate)->format('M d') : '' }}
+                            {{ $user->birthdate ? \Carbon\Carbon::parse($user->birthdate)->format('M d') : '' }}
                         </p>
                     </div>
                     <div class="joindate"><i class="fa-solid fa-calendar-days"></i>
-                        <p>Joined {{ auth()->user()->created_at->format('M d') }}</p>
+                        <p>Joined {{ $user->created_at->format('M d') }}</p>
                     </div>
                 </div>
                 <div class="follow">
@@ -57,7 +57,7 @@
         @foreach ($posts as $post)
             <div class="post-container">
                 <div class="post-profile">
-                    <img src="{{ asset('storage/profileImages/' . $post->user->profile) }}" alt=""
+                    <img src="{{  asset($post->user->profile) }}" alt=""
                         class="post-profile-img">
                     <div class="post-profile-info">
                         <p class="post-profile-name">{{ $post->user->full_name }}</p>

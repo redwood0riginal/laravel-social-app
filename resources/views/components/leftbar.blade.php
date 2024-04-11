@@ -25,7 +25,7 @@
         <li><a href="">Post</a></li>
     </ul>
     <div class="sidebar-profile">
-        <img src="{{ asset('storage/profileImages/' . auth()->user()->profile) }}" alt="">
+        <img src="{{ auth()->user()->profile }}" alt="">
         <div class="sidebar-profile-info">
             <p class="name">{{auth()->user()->full_name}}</p>
             <p class="username">{{auth()->user()->username}}</p>
