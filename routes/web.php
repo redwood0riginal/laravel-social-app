@@ -5,7 +5,7 @@ use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function(){
-    return view('layouts.layout');
+    return view('content.home');
 })->middleware('mustBeLogedIn')->name('home');
 
 
@@ -14,6 +14,7 @@ Route::get('/register-form', [UserController::class, 'registerForm']);
 Route::get('/login-form', [UserController::class, 'loginForm']);
 Route::post('/register', [UserController::class, 'register']);
 Route::post('/login', [UserController::class, 'login']);
+Route::post('/logout', [UserController::class, 'logout'])->middleware('mustBeLogedIn')->name('logout');
 
 // post related routes
 Route::post('/create-post', [PostController::class, 'store']);

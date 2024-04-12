@@ -29,15 +29,21 @@
                     <p class="user-name">{{ $user->full_name }}</p>
                     <p class="user-username">{{ $user->username }}</p>
                 </div>
-                <div class="description">
-                    <p>{{ $user->description }}</p>
-                </div>
-                <div class="dates">
-                    <div class="birthdate"><i class="fa-solid fa-cake-candles"></i>
-                        <p>Born
-                            {{ $user->birthdate ? \Carbon\Carbon::parse($user->birthdate)->format('M d') : '' }}
-                        </p>
+                @if ($user->description)
+                    <div class="description">
+                        <p>{{ $user->description }}</p>
                     </div>
+                @endif
+
+                <div class="dates">
+                    @if ($user->birthdate)
+                        <div class="birthdate"><i class="fa-solid fa-cake-candles"></i>
+                            <p>Born
+                                {{ $user->birthdate ? \Carbon\Carbon::parse($user->birthdate)->format('M d') : '' }}
+                            </p>
+                        </div>
+                    @endif
+
                     <div class="joindate"><i class="fa-solid fa-calendar-days"></i>
                         <p>Joined {{ $user->created_at->format('M d') }}</p>
                     </div>

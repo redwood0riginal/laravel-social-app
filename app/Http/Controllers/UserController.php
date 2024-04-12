@@ -49,6 +49,14 @@ class UserController extends Controller
         }
     }
 
+    public function logout(User $user){
+        if (auth()->check()){
+            auth()->logout();
+            return redirect('/')->with('success','Loged out successfully ');
+        };
+
+    }
+
     public function showProfile(User $user, Post $post) {
 
         $posts = Post::where('user_id', $user->id)->orderBy('created_at', 'desc')->get();
