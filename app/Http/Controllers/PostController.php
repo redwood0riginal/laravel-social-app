@@ -42,11 +42,10 @@ class PostController extends Controller
     }
 
 
-    public function destroy(Post $post, User $user){
+    public function destroy(Post $post){
         if ($post->user_id !== auth()->id()) {
             abort(403, 'Unauthorized action.');
         }
-        $post = Post::where('id', $post->id)->firstOrFail();
         $post->delete();
         return back()->with('success', 'post successfully deleted');    }
 }

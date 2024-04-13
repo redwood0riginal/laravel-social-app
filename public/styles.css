@@ -142,11 +142,11 @@ a {
     color: grey;
 }
 
-.sidebar-profile .logout{
+.sidebar-profile .logout {
     align-self: flex-end;
 }
 
-.sidebar-profile .logout form .Btn{
+.sidebar-profile .logout form .Btn {
     --black: #000000;
     --ch-black: #141414;
     --eer-black: #1b1b1b;
@@ -164,28 +164,28 @@ a {
     cursor: pointer;
     position: relative;
     overflow: hidden;
-    transition-duration: .3s;
+    transition-duration: 0.3s;
     box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.199);
     background-color: var(--night-rider);
 }
 
 .sidebar-profile .logout form .Btn .sign {
     width: 100%;
-    transition-duration: .3s;
+    transition-duration: 0.3s;
     display: flex;
     align-items: center;
     justify-content: center;
-  }
+}
 
-  .sidebar-profile .logout form .Btn .sign svg {
+.sidebar-profile .logout form .Btn .sign svg {
     width: 17px;
-  }
+}
 
-  .sidebar-profile .logout form .Btn .sign svg path {
+.sidebar-profile .logout form .Btn .sign svg path {
     fill: var(--af-white);
-  }
+}
 
-  .sidebar-profile .logout form .Btn .text {
+.sidebar-profile .logout form .Btn .text {
     position: absolute;
     right: 0%;
     width: 0%;
@@ -193,31 +193,31 @@ a {
     color: var(--af-white);
     font-size: 1.2em;
     font-weight: 600;
-    transition-duration: .3s;
-  }
+    transition-duration: 0.3s;
+}
 
-  .sidebar-profile .logout form .Btn:hover {
+.sidebar-profile .logout form .Btn:hover {
     width: 125px;
     border-radius: 5px;
-    transition-duration: .3s;
-  }
+    transition-duration: 0.3s;
+}
 
-  .sidebar-profile .logout form .Btn:hover .sign {
+.sidebar-profile .logout form .Btn:hover .sign {
     width: 30%;
-    transition-duration: .2s;
+    transition-duration: 0.2s;
     padding-left: 20px;
-  }
+}
 
-  .sidebar-profile .logout form .Btn:hover .text {
+.sidebar-profile .logout form .Btn:hover .text {
     opacity: 1;
     width: 70%;
-    transition-duration: .3s;
+    transition-duration: 0.3s;
     padding-left: 18px;
-  }
+}
 
-  .sidebar-profile .logout form .Btn:active {
-    transform: translate(2px ,2px);
-  }
+.sidebar-profile .logout form .Btn:active {
+    transform: translate(2px, 2px);
+}
 
 /* middle section styling */
 
@@ -629,6 +629,10 @@ input:-webkit-autofill:active {
     cursor: pointer;
 }
 
+.back-container .back a {
+    font-size: 25px;
+}
+
 .back-container .back:hover {
     background-color: rgba(128, 128, 128, 0.422);
 }
@@ -695,7 +699,8 @@ input:-webkit-autofill:active {
     width: 100%;
     height: auto;
 }
-.user-profile-container .edit-profile {
+
+.user-profile-container .edit-profile, .follow-profile {
     position: absolute;
     width: 100px;
     height: 30px;
@@ -708,6 +713,43 @@ input:-webkit-autofill:active {
     border: 1px solid grey;
     border-radius: 20px;
 }
+
+.user-profile-container .follow-profile{
+    border: none;
+}
+.user-profile-container .follow-profile form  {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--third-clr);
+    color: var(--second-clr);
+}
+.user-profile-container .follow-profile form button {
+    appearance: none;
+    -webkit-appearance: none;
+    border: 1px solid var(--third-clr);
+    outline: none;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--third-clr);
+    color: var(--second-clr);
+    font-size: 16px;
+    border-radius: 20px;
+    cursor: pointer;
+
+}
+
+.user-profile-container .follow-profile form .unfollow{
+    background-color: var(--main-clr);
+    color: var(--second-clr);
+    border: 1px solid var(--third-clr);
+}
+
 
 .user-profile-container .edit-profile a {
     font-size: 16px;
@@ -807,7 +849,7 @@ input:-webkit-autofill:active {
     background-color: rgba(128, 128, 128, 0.11);
 }
 
-.profile-section .post-container .post-profile .delete-btn{
+.profile-section .post-container .post-profile .delete-btn {
     position: absolute;
     right: 50px;
     width: 30px;
@@ -817,20 +859,18 @@ input:-webkit-autofill:active {
     align-items: center;
 }
 
-.profile-section .post-container .post-profile .delete-btn form button{
+.profile-section .post-container .post-profile .delete-btn form button {
     width: 30px;
     height: 30px;
     background: 0;
     cursor: pointer;
-
-
 }
-.profile-section .post-container .post-profile .delete-btn form button i{
-   font-size: 20px;
-   color: red;
+.profile-section .post-container .post-profile .delete-btn form button i {
+    font-size: 20px;
+    color: red;
 }
 /* profile form styles */
-.profile-container-form{
+.profile-container-form {
     position: absolute;
     width: 700px;
     height: 100vh;
@@ -852,45 +892,45 @@ input:-webkit-autofill:active {
     padding: 25px;
     border-radius: 8px;
     box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
-  }
+}
 
-  .profile-form-container .photos {
+.profile-form-container .photos {
     display: flex;
-    flex-direction:column ;
-  }
-  .profile-form-container .photos input {
+    flex-direction: column;
+}
+.profile-form-container .photos input {
     margin-bottom: 10px;
-  }
+}
 
-  .profile-form-container .photos label {
+.profile-form-container .photos label {
     margin-bottom: 5px;
-  }
+}
 
-  .profile-form-container header {
+.profile-form-container header {
     font-size: 1.2rem;
     color: var(--second-clr);
     font-weight: 600;
     text-align: center;
-  }
+}
 
-  .profile-form-container .form {
+.profile-form-container .form {
     margin-top: 15px;
-  }
+}
 
-  .profile-form-container .form .input-box {
+.profile-form-container .form .input-box {
     width: 100%;
     margin-top: 10px;
-  }
+}
 
-  .profile-form-container .form .input-box label {
+.profile-form-container .form .input-box label {
     color: var(--second-clr);
-  }
+}
 
-  .profile-form-container .form .input-box.desc input {
+.profile-form-container .form .input-box.desc input {
     height: 70px;
-  }
+}
 
-  .profile-form-container .form :where(.input-box input) {
+.profile-form-container .form :where(.input-box input) {
     position: relative;
     height: 35px;
     width: 100%;
@@ -902,50 +942,49 @@ input:-webkit-autofill:active {
     border-radius: 6px;
     padding: 0 15px;
     background: var(--main-clr);
-  }
+}
 
-  .profile-form-container .form .input-box input:focus {
+.profile-form-container .form .input-box input:focus {
     box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
-  }
+}
 
-  .profile-form-container .form .column {
+.profile-form-container .form .column {
     display: flex;
     column-gap: 15px;
-  }
+}
 
-  .profile-form-container .form .gender-box {
+.profile-form-container .form .gender-box {
     margin-top: 10px;
-  }
+}
 
-  .profile-form-container .form :where(.gender-option, .gender) {
+.profile-form-container .form :where(.gender-option, .gender) {
     display: flex;
     align-items: center;
     column-gap: 50px;
     flex-wrap: wrap;
-  }
+}
 
-  .profile-form-container .form .gender {
+.profile-form-container .form .gender {
     column-gap: 5px;
-  }
+}
 
-  .profile-form-container .form .gender input {
+.profile-form-container .form .gender input {
     accent-color: var(--third-clr);
-  }
+}
 
-  .profile-form-container .form :where(.gender input, .gender label) {
+.profile-form-container .form :where(.gender input, .gender label) {
     cursor: pointer;
-  }
+}
 
-  .profile-form-container .form .gender label {
+.profile-form-container .form .gender label {
     color: var(--second-clr);
-  }
+}
 
-  .profile-form-container .form .address :where(input, .select-box) {
+.profile-form-container .form .address :where(input, .select-box) {
     margin-top: 10px;
-  }
+}
 
-
-  .form button {
+.form button {
     height: 40px;
     width: 100%;
     color: #000;
@@ -957,8 +996,8 @@ input:-webkit-autofill:active {
     cursor: pointer;
     transition: all 0.2s ease;
     background: var(--third-clr);
-  }
+}
 
-  .form button:hover {
+.form button:hover {
     opacity: 0.8;
-  }
+}

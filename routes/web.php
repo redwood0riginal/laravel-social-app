@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\FollowerController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -23,7 +24,10 @@ Route::delete('/delete-post/{post}', [PostController::class, 'destroy'])->middle
 
 
 // profile related routes
-Route::get('/profile/{user}', [UserController::class, 'showProfile'])->name('profile')->middleware('mustBeLogedIn');
+Route::get('/profile/{user}', [UserController::class, 'showProfile'])->name('profile')->middleware('mustBeLogedIn')->name('profile.show');
 Route::get('/profile-form/{user}/edit', [UserController::class, 'showProfileForm'])->middleware('mustBeLogedIn')->name('profile.edit');
 Route::put('/profile/{user}', [UserController::class, 'update'])->name('profile.update')->middleware('mustBeLogedIn');
 
+// follow related routes
+Route::post('users/{user}/follow',[FollowerController::class, 'follow'])->middleware('mustBeLogedIn')->name('user.follow');
+Route::post('users/{user}/unfollow',[FollowerController::class, 'unfollow'])->middleware('mustBeLogedIn')->name('user.unfollow');

@@ -49,12 +49,11 @@ class UserController extends Controller
         }
     }
 
-    public function logout(User $user){
+    public function logout(){
         if (auth()->check()){
             auth()->logout();
             return redirect('/')->with('success','Loged out successfully ');
         };
-
     }
 
     public function showProfile(User $user, Post $post) {

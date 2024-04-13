@@ -22,6 +22,22 @@
                     <div class="edit-profile">
                         <a href="/profile-form/{{ auth()->user()->id }}/edit">Edit profile</a>
                     </div>
+                @else
+                    <div class="follow-profile">
+                        @if (auth()->user()->follows($user))
+                            <form action="{{ route('user.unfollow', $user->id) }}" method="POST">
+                                @csrf
+                                <button type="submit" class="unfollow">Unfollow</button>
+                            </form>
+                        @else
+                            <form action="{{ route('user.follow', $user->id) }}" method="POST">
+                                @csrf
+                                <button type="submit">Follow</button>
+                            </form>
+                        @endif
+
+
+                    </div>
                 @endif
             </div>
             <div class="information-user">
