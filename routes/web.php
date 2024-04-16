@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\FollowerController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\UserController;
@@ -18,10 +19,10 @@ Route::post('/login', [UserController::class, 'login']);
 Route::post('/logout', [UserController::class, 'logout'])->middleware('mustBeLogedIn')->name('logout');
 
 // post related routes
-Route::post('/create-post', [PostController::class, 'store']);
+Route::post('/create-post', [PostController::class, 'store'])->middleware('mustBeLogedIn');
 Route::get('/', [PostController::class, 'index'])->middleware('mustBeLogedIn')->name('home');
+Route::get('/posts/{post}', [PostController::class, 'show'])->middleware('mustBeLogedIn')->name('posts.show');
 Route::delete('/delete-post/{post}', [PostController::class, 'destroy'])->middleware('mustBeLogedIn')->name('post.delete');
-
 
 // profile related routes
 Route::get('/profile/{user}', [UserController::class, 'showProfile'])->name('profile')->middleware('mustBeLogedIn')->name('profile.show');
@@ -31,3 +32,7 @@ Route::put('/profile/{user}', [UserController::class, 'update'])->name('profile.
 // follow related routes
 Route::post('users/{user}/follow',[FollowerController::class, 'follow'])->middleware('mustBeLogedIn')->name('user.follow');
 Route::post('users/{user}/unfollow',[FollowerController::class, 'unfollow'])->middleware('mustBeLogedIn')->name('user.unfollow');
+
+// comments related routes
+Route::post('posts/{post}/comments',[CommentController::class, 'store'])->middleware('mustBeLogedIn')->name('posts.comment.store');
+

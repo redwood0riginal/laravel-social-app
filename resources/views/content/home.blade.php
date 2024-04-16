@@ -59,8 +59,7 @@
             @foreach ($posts as $post)
                 <div class="post-container">
                     <div class="post-profile">
-                        <a href="profile/{{ $post->user_id }}"> <img
-                                src="{{ $post->user->profile }}" alt=""
+                        <a href="/profile/{{ $post->user_id }}"> <img src="{{ asset($post->user->profile) }}" alt=""
                                 class="post-profile-img"></a>
                         <div class="post-profile-info">
                             <a href="profile/{{ $post->user_id }}">
@@ -83,10 +82,12 @@
                                 <i class="fa-regular fa-heart"></i>
                                 <p class="likes-num">{{ $post->likes }}</p>
                             </div>
-                            <div class="cmnts">
-                                <i class="fa-regular fa-comment"></i>
-                                <p class="cmnts-num">{{ $post->comments }}</p>
-                            </div>
+                            <a href="{{ route('posts.show', $post->id) }}">
+                                <div class="cmnts">
+                                    <i class="fa-regular fa-comment"></i>
+                                    <p class="cmnts-num">{{ $post->comments }}</p>
+                                </div>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -96,4 +97,3 @@
 
 
 </x-layout>
-

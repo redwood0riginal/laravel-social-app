@@ -2,12 +2,19 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Comment;
 use App\Models\Post;
 use App\Models\User;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
+
+    public function show(Post $post, Comment $comment){
+        $comments = Comment::where('post_id', $post->id)->get();
+        return view('content.single-post', compact('post', 'comments'));
+    }
+
     public function store(Request $request, Post $post)
     {
         $formFields = $request->validate([

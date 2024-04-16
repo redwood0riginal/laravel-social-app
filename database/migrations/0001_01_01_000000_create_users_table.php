@@ -21,11 +21,7 @@ return new class extends Migration
             $table->string("thumbnail"  )->nullable();
             $table->string("profile")->nullable();
             $table->enum("gender",["male","female"])->nullable();
-            $table->enum("relationship",["single","married","engaged"])->nullable();
-            $table->string("location")->nullable();
             $table->string("address")->nullable();
-            $table->boolean("is_private")->default(0);
-            $table->boolean("is_banned")->default(0);
             $table->string('password');
             $table->date('birthdate')->nullable();
             $table->rememberToken();

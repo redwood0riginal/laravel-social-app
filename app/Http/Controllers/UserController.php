@@ -76,7 +76,7 @@ class UserController extends Controller
             'full_name' => '',
             'username' => [Rule::unique('users')->ignore($user)],
             'description' => 'max:255',
-            'birthdate' => 'date',
+            'birthdate' => '',
             'gender' => 'required|in:male,female',
             'address' => '',
         ]);

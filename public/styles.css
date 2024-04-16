@@ -1001,3 +1001,28 @@ input:-webkit-autofill:active {
 .form button:hover {
     opacity: 0.8;
 }
+
+
+/* single post styling */
+.single-post{
+    position: absolute;
+    width: 700px;
+    min-height: 100vh;
+    border-right: 1px solid grey;
+    left: 400px;
+    display: flex;
+    flex-direction: column;
+}
+
+.single-post .form-contro {
+    border-bottom: 1px solid grey;
+    width: 100%;
+    height: 10vh;
+    display: flex;
+    align-items: center;
+    padding: 20px;
+}
+
+.single-post .comments .post-container{
+    padding-left: 80px;
+}
