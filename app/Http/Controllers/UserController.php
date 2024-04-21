@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Like;
 use App\Models\Post;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -57,9 +58,15 @@ class UserController extends Controller
     }
 
     public function showProfile(User $user, Post $post) {
-
         $posts = Post::where('user_id', $user->id)->orderBy('created_at', 'desc')->get();
         return view('content.profile', compact('posts', 'user'));
+    }
+
+    public function showlikedPosts(User $user, Post $post) {
+        $loggedUser = auth()->user();
+        $likedPostIds = Like::where('user_id', $loggedUser->id)->pluck('post_id')->toArray();
+        $posts = Post::whereIn('id', $likedPostIds)->orderByDesc('created_at')->get();
+        return view('content.liked-posts', compact('posts', 'user'));
     }
 
     public function showProfileForm(User $user){

@@ -12,7 +12,7 @@ Route::get('/', function(){
 })->middleware('mustBeLogedIn')->name('home');
 
 // following feed related routes
-Route::get('/following', [PostController::class, 'followigIndex'])->middleware('mustBeLogedIn')->name('home.following');
+Route::get('/following', [PostController::class, 'followig'])->middleware('mustBeLogedIn')->name('home.following');
 
 // user related routes
 Route::get('/register-form', [UserController::class, 'registerForm']);
@@ -28,9 +28,14 @@ Route::get('/posts/{post}', [PostController::class, 'show'])->middleware('mustBe
 Route::delete('/delete-post/{post}', [PostController::class, 'destroy'])->middleware('mustBeLogedIn')->name('post.delete');
 
 // profile related routes
-Route::get('/profile/{user}', [UserController::class, 'showProfile'])->name('profile')->middleware('mustBeLogedIn')->name('profile.show');
+Route::get('/profile/{user}', [UserController::class, 'showProfile'])->middleware('mustBeLogedIn')->name('profile.show');
 Route::get('/profile-form/{user}/edit', [UserController::class, 'showProfileForm'])->middleware('mustBeLogedIn')->name('profile.edit');
 Route::put('/profile/{user}', [UserController::class, 'update'])->name('profile.update')->middleware('mustBeLogedIn');
+
+// liked post related routes
+Route::get('/profile/{user}/liked', [UserController::class, 'showlikedPosts'])->middleware('mustBeLogedIn')->name('profile.liked.show');
+
+
 
 // follow related routes
 Route::post('users/{user}/follow',[FollowerController::class, 'follow'])->middleware('mustBeLogedIn')->name('user.follow');

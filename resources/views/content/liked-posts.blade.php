@@ -85,7 +85,7 @@
                         <p class="post-profile-username">{{ '@' }}{{ $post->user->username }}</p>
                         <p class="post-profile-time">{{ $post->created_at->diffForHumans() }}</p>
                     </div>
-                    @if ($user->id == auth()->id())
+                    @if ($user->id == auth()->id() && $post->user_id == auth()->id())
                         <div class="delete-btn">
                             <form method="POST" action="{{ route('post.delete', $post->id) }}">
                                 @csrf

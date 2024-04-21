@@ -92,7 +92,7 @@ class PostController extends Controller
         }
     }
 
-    public function followigIndex(){
+    public function followig(){
         $user = auth()->user();
         $followingsIDs = $user->followings()->pluck('user_id');
         $posts = Post::whereIn('user_id', $followingsIDs)->orderBy('created_at', 'desc')->get();
