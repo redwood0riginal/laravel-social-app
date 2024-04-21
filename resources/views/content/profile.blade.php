@@ -65,8 +65,8 @@
                     </div>
                 </div>
                 <div class="follow">
-                    <div class="following-list"><a href=""><span>80 </span>Following</a></div>
-                    <div class="followers-list"><a href=""><span>36 </span>Followers</a></div>
+                    <div class="following-list"><a href=""><span>{{ $user->followings->count() }} </span>Following</a></div>
+                    <div class="followers-list"><a href=""><span>{{ $user->followers->count() }} </span>Followers</a></div>
                 </div>
             </div>
         </div>
@@ -83,7 +83,7 @@
                     <div class="post-profile-info">
                         <p class="post-profile-name">{{ $post->user->full_name }}</p>
                         <p class="post-profile-username">{{ '@' }}{{ $post->user->username }}</p>
-                        <p class="post-profile-time">{{ $post->created_at->format('D-m-y') }}</p>
+                        <p class="post-profile-time">{{ $post->created_at->diffForHumans() }}</p>
                     </div>
                     @if ($user->id == auth()->id())
                         <div class="delete-btn">
@@ -96,7 +96,6 @@
                     @endif
                 </div>
 
-
                 <div class="post-info">
                     <div class="post-text">{{ $post->content }}</div>
                     @if ($post->media)
@@ -105,16 +104,18 @@
                     @endif
                     <div class="like-cmnt">
                         <div class="likes">
-                            <form action="{{ route('posts.like')}}" id="form-js">
+                            <form action="{{ route('posts.like') }}" id="form-js">
                                 <input type="hidden" value='{{ $post->id }}' id="post-id-js">
                                 <button type="submit" class=""><i class="fa-regular fa-heart"></i></button>
-                             </form>
-                             <p class="likes-num" id="count-js">{{ $post->likes->count() }}</p>
+                            </form>
+                            <p class="likes-num" id="count-js">{{ $post->likes->count() }}</p>
                         </div>
-                        <div class="cmnts">
-                            <i class="fa-regular fa-comment"></i>
-                            <p class="cmnts-num">{{ $post->comments->count() }}</p>
-                        </div>
+                        <a href="{{ route('posts.show', $post->id) }}">
+                            <div class="cmnts">
+                                <i class="fa-regular fa-comment"> </i>
+                                <p class="cmnts-num">{{$post->comments->count()}}</p>
+                            </div>
+                        </a>
                     </div>
                 </div>
             </div>

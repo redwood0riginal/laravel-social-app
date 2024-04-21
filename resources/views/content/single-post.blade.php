@@ -17,7 +17,7 @@
                     <a href="/profile/{{ $post->user_id }}">
                         <p class="post-profile-username">{{ '@' }}{{ $post->user->username }}</p>
                     </a>
-                    <p class="post-profile-time">{{ $post->user->created_at->format('D-m-y') }}</p>
+                    <p class="post-profile-time">{{ $post->created_at->diffForHumans() }}</p>
                 </div>
             </div>
             <div class="post-info">
@@ -86,7 +86,7 @@
                             <a href="/profile/{{ $comment->user_id }}">
                                 <p class="post-profile-username">{{ '@' }}{{ $comment->user->username }}</p>
                             </a>
-                            <p class="post-profile-time">{{ $comment->created_at->format('D-m-y') }}</p>
+                            <p class="post-profile-time">{{ $comment->created_at->diffForHumans() }}</p>
                         </div>
                     </div>
                     <div class="post-info">

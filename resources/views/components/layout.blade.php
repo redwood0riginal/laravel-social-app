@@ -35,46 +35,36 @@
     @include('components.rightbar')
 
     <script>
-       const forms = document.querySelectorAll('#form-js');
+        const forms = document.querySelectorAll('#form-js');
 
-forms.forEach(form => {
-    form.addEventListener('submit', function(e) {
-        e.preventDefault();
+        forms.forEach(form => {
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
 
-        const url = this.getAttribute('action');
-        const token = document.querySelector('meta[name="csrf-token"]').content;
-        const postId = this.querySelector('#post-id-js').value;
-        const count = this.closest('.likes').querySelector('.likes-num');
-        const heartIcon = this.querySelector('button i'); // Select the heart icon
+                const url = this.getAttribute('action');
+                const token = document.querySelector('meta[name="csrf-token"]').content;
+                const postId = this.querySelector('#post-id-js').value;
+                const count = this.closest('.likes').querySelector('.likes-num');
 
-        fetch(url, {
-            headers: {
-                'Content-Type': 'application/json',
-                'X-CSRF-TOKEN': token
-            },
-            method: 'post',
-            body: JSON.stringify({
-                id: postId
-            })
-        }).then(response => {
-            response.json().then(data => {
-                count.innerHTML = data.count;
+                fetch(url, {
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRF-TOKEN': token
+                    },
+                    method: 'post',
+                    body: JSON.stringify({
+                        id: postId
+                    })
+                }).then(response => {
+                    response.json().then(data => {
+                        count.innerHTML = data.count;
+                    })
+                }).catch(error => {
+                    console.log(error)
+                });
 
-                // Toggle the 'liked' class on the heart icon based on the liked state
-                if (data.isLiked) {
-                    heartIcon.classList.add('liked');
-                } else {
-                    heartIcon.classList.remove('liked');
-                }
-            })
-        }).catch(error => {
-            console.log(error)
+            });
         });
-
-    });
-});
-
-
     </script>
 </body>
 

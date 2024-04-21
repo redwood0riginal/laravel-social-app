@@ -473,6 +473,7 @@ a {
 .post-container .post-info .like-cmnt i {
     font-size: 20px;
     cursor: pointer;
+
 }
 
 /* right-bar styles */
@@ -1034,6 +1035,4 @@ input:-webkit-autofill:active {
 }
 
 
-.liked{
-    background-color: red;
-}
+

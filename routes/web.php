@@ -11,6 +11,8 @@ Route::get('/', function(){
     return view('content.home');
 })->middleware('mustBeLogedIn')->name('home');
 
+// following feed related routes
+Route::get('/following', [PostController::class, 'followigIndex'])->middleware('mustBeLogedIn')->name('home.following');
 
 // user related routes
 Route::get('/register-form', [UserController::class, 'registerForm']);
