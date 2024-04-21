@@ -105,12 +105,15 @@
                     @endif
                     <div class="like-cmnt">
                         <div class="likes">
-                            <i class="fa-regular fa-heart"></i>
-                            <p class="likes-num">{{ $post->likes }}</p>
+                            <form action="{{ route('posts.like')}}" id="form-js">
+                                <input type="hidden" value='{{ $post->id }}' id="post-id-js">
+                                <button type="submit" class=""><i class="fa-regular fa-heart"></i></button>
+                             </form>
+                             <p class="likes-num" id="count-js">{{ $post->likes->count() }}</p>
                         </div>
                         <div class="cmnts">
                             <i class="fa-regular fa-comment"></i>
-                            <p class="cmnts-num">{{ $post->comments }}</p>
+                            <p class="cmnts-num">{{ $post->comments->count() }}</p>
                         </div>
                     </div>
                 </div>

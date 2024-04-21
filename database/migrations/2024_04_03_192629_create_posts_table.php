@@ -17,13 +17,11 @@ return new class extends Migration
             $table->longText("content");
             $table->string("media")->nullable();
             $table->boolean("is_public")->default(1);
-            $table->enum("status", ["published", "pending", "rejected"])->default("pending");
-            $table->unsignedBigInteger("likes")->default(0);
-            $table->unsignedBigInteger("comments")->default(0);
             $table->boolean("is_page_post")->default(0);
             $table->foreignId("page_id")->nullable()->constrained()->cascadeOnDelete();
             $table->boolean("is_group_post")->default(0);
             $table->foreignId("group_id")->nullable()->constrained()->cascadeOnDelete();
+            $table->integer('number_of_comments')->default(0);
             $table->softDeletes();
             $table->timestamps();
         });

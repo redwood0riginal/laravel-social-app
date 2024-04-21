@@ -19,7 +19,7 @@ class Post extends Model
         "status",
         'is_public',
         "likes",
-        "comments",
+        "number_of_comments",
         "is_page_post",
         "page_id",
         "is_group_post",
@@ -36,6 +36,11 @@ class Post extends Model
     public function likes(): HasMany
     {
         return $this->hasMany(Like::class);
+    }
+
+    public function isLikedByLoggedInUser()
+    {
+        return $this->likes->where('user_id', auth()->user()->id)->isEmpty() ? false : true;
     }
 
     public function user(): BelongsTo

@@ -19,6 +19,8 @@ class CommentController extends Controller
 
         Comment::create($comment);
 
+
+
         return redirect()->route('posts.show', $post->id)->with('success', "Comment posted successfully!");
     }
 }

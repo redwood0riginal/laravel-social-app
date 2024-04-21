@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\FollowerController;
+use App\Http\Controllers\LikeController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -36,3 +37,6 @@ Route::post('users/{user}/unfollow',[FollowerController::class, 'unfollow'])->mi
 // comments related routes
 Route::post('posts/{post}/comments',[CommentController::class, 'store'])->middleware('mustBeLogedIn')->name('posts.comment.store');
 
+// likes related routes
+
+Route::post('/like',[PostController::class, 'like'])->middleware('mustBeLogedIn')->name('posts.like');

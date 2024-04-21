@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Comment;
+use App\Models\Like;
 use App\Models\Post;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -11,7 +12,8 @@ class PostController extends Controller
 {
 
     public function show(Post $post, Comment $comment){
-        $comments = Comment::where('post_id', $post->id)->get();
+        $comments = Comment::where('post_id', $post->id)->orderBy('created_at', 'desc')->get();
+
         return view('content.single-post', compact('post', 'comments'));
     }
 
@@ -23,6 +25,7 @@ class PostController extends Controller
         ]);
 
         $formFields['user_id'] = auth()->id();
+        $formFields['number_of_comments'] =  0;
 
         // Check if media content is uploaded
         if ($request->hasFile('media')) {
@@ -54,5 +57,39 @@ class PostController extends Controller
             abort(403, 'Unauthorized action.');
         }
         $post->delete();
-        return back()->with('success', 'post successfully deleted');    }
+        return back()->with('success', 'post successfully deleted');
+    }
+
+
+
+    public function like()
+    {
+        $post = Post::find(request()->id);
+
+        if ($post->isLikedByLoggedInUser()) {
+            $res = Like::where([
+                'user_id' => auth()->user()->id,
+                'post_id' => request()->id
+            ])->delete();
+
+            if ($res) {
+                return response()->json([
+                    'count' => Post::find(request()->id)->likes->count()
+                ]);
+            }
+
+        } else {
+            $like = new Like();
+
+            $like->user_id = auth()->user()->id;
+            $like->post_id = request()->id;
+
+            $like->save();
+
+            return response()->json([
+                'count' => Post::find(request()->id)->likes->count()
+            ]);
+        }
+    }
+
 }

@@ -464,6 +464,12 @@ a {
     font-size: small;
 }
 
+.post-container .post-info .like-cmnt button {
+    background: none;
+    color: white;
+    border: none;
+}
+
 .post-container .post-info .like-cmnt i {
     font-size: 20px;
     cursor: pointer;
@@ -1025,4 +1031,9 @@ input:-webkit-autofill:active {
 
 .single-post .comments .post-container{
     padding-left: 80px;
+}
+
+
+.liked{
+    background-color: red;
 }
