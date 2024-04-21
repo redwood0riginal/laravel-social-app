@@ -3,7 +3,7 @@
     <div class="profile-section">
 
         <div class="back-container">
-            <div class="back"><a href="/"><i class="fa-solid fa-arrow-left"></i></a></div>
+            <div class="back" onclick="goBack()"><i class="fa-solid fa-arrow-left"></i></div>
             <div class="user-info">
                 <p href="" class="user-name">{{ $user->username }}</p>
                 <span class="posts-length">{{ count($user->posts) }}

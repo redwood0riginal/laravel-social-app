@@ -1,7 +1,7 @@
 <x-layout>
     <div class="single-post">
         <div class="back-container">
-            <div class="back"><a href="/"><i class="fa-solid fa-arrow-left"></i></a></div>
+            <div class="back" onclick="goBack()"><i class="fa-solid fa-arrow-left"></i></div>
             <div class="user-info">
                 <p href="" class="user-name">post</p>
             </div>
