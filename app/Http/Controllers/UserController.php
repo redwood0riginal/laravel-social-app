@@ -62,9 +62,8 @@ class UserController extends Controller
         return view('content.profile', compact('posts', 'user'));
     }
 
-    public function showlikedPosts(User $user, Post $post) {
-        $loggedUser = auth()->user();
-        $likedPostIds = Like::where('user_id', $loggedUser->id)->pluck('post_id')->toArray();
+    public function showLikedPosts(User $user) {
+        $likedPostIds = Like::where('user_id', $user->id)->pluck('post_id')->toArray();
         $posts = Post::whereIn('id', $likedPostIds)->orderByDesc('created_at')->get();
         return view('content.liked-posts', compact('posts', 'user'));
     }

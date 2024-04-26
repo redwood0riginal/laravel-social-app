@@ -79,10 +79,16 @@
         @foreach ($posts as $post)
             <div class="post-container">
                 <div class="post-profile">
-                    <img src="{{ asset($post->user->profile) }}" alt="" class="post-profile-img">
+                    <a href="{{route('profile.show', $post->user->id)}}">
+                        <img src="{{ asset($post->user->profile) }}" alt="" class="post-profile-img">
+                    </a>
                     <div class="post-profile-info">
-                        <p class="post-profile-name">{{ $post->user->full_name }}</p>
-                        <p class="post-profile-username">{{ '@' }}{{ $post->user->username }}</p>
+                        <a href="{{route('profile.show', $post->user->id)}}">
+                            <p class="post-profile-name">{{ $post->user->full_name }}</p>
+                        </a>
+                        <a href="{{route('profile.show', $post->user->id)}}">
+                            <p class="post-profile-username">{{ '@' }}{{ $post->user->username }}</p>
+                        </a>
                         <p class="post-profile-time">{{ $post->created_at->diffForHumans() }}</p>
                     </div>
                     @if ($user->id == auth()->id() && $post->user_id == auth()->id())
