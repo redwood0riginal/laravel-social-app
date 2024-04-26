@@ -35,6 +35,10 @@ Route::put('/profile/{user}', [UserController::class, 'update'])->name('profile.
 // liked post related routes
 Route::get('/profile/{user}/liked', [UserController::class, 'showlikedPosts'])->middleware('mustBeLogedIn')->name('profile.liked.show');
 
+// followers and followings related routes
+Route::get('/profile/{user}/followings', [UserController::class, 'followings'])->middleware('mustBeLogedIn')->name('profile.followings');
+Route::get('/profile/{user}/followers', [UserController::class, 'followers'])->middleware('mustBeLogedIn')->name('profile.followers');
+
 
 
 // follow related routes

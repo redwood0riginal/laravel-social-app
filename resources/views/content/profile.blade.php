@@ -55,18 +55,18 @@
                     @if ($user->birthdate)
                         <div class="birthdate"><i class="fa-solid fa-cake-candles"></i>
                             <p>Born
-                                {{ $user->birthdate ? \Carbon\Carbon::parse($user->birthdate)->format('M d') : '' }}
+                                {{$user->id = auth()->id() ? ($user->birthdate ? \Carbon\Carbon::parse($user->birthdate)->format('M d Y') : '') : ($user->birthdate ? \Carbon\Carbon::parse($user->birthdate)->format('M d') : '') }}
                             </p>
                         </div>
                     @endif
 
                     <div class="joindate"><i class="fa-solid fa-calendar-days"></i>
-                        <p>Joined {{ $user->created_at->format('M d') }}</p>
+                        <p>Joined {{ $user->created_at->format('M Y') }}</p>
                     </div>
                 </div>
                 <div class="follow">
-                    <div class="following-list"><a href=""><span>{{ $user->followings->count() }} </span>Following</a></div>
-                    <div class="followers-list"><a href=""><span>{{ $user->followers->count() }} </span>Followers</a></div>
+                    <div class="following-list"><a href="{{ route('profile.followings', $user->id) }}"><span>{{ $user->followings->count() }} </span>Following</a></div>
+                    <div class="followers-list"><a href="{{ route('profile.followers', $user->id) }}"><span>{{ $user->followers->count() }} </span>Followers</a></div>
                 </div>
             </div>
         </div>

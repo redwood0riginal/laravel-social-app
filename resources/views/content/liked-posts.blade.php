@@ -61,7 +61,7 @@
                     @endif
 
                     <div class="joindate"><i class="fa-solid fa-calendar-days"></i>
-                        <p>Joined {{ $user->created_at->format('M d') }}</p>
+                        <p>Joined {{ $user->created_at->format('M Y') }}</p>
                     </div>
                 </div>
                 <div class="follow">

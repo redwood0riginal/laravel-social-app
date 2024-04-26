@@ -1035,4 +1035,87 @@ input:-webkit-autofill:active {
 }
 
 
+/* followings list styles */
+.followings-section {
+    position: absolute;
+    width: 700px;
+    min-height: 100vh;
+    border-right: 1px solid grey;
+    left: 400px;
+    display: flex;
+    flex-direction: column;
+}
+
+.followings-section .followings-list{
+    width: 100%;
+    min-height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    border-bottom: 1px solid grey;
+}
+
+.followings-section .followings-list .followings-info{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.followings-section .followings-list .followings-info .followings-profile{
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 10px;
+}
+
+.followings-section .followings-list .followings-info .followings-profile img{
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+
+.followings-section .followings-list .followings-info .followings-info-text .followings-username{
+    font-size: 14px;
+    color: grey;
+}
+
+.followings-section .followings-list .followings-info .followings-info-text .followings-fullname{
+    font-size: 18px;
+}
+
+.followings-section .followings-list .followings-info .followings-info-text .followings-bio{
+    font-size: 16px;
+}
+
+
+.followings-section .follow-button form button{
+    width: 110px;
+    height: 30px;
+    font-size: 16px;
+    border-radius: 15px;
+    background-color: var(--main-clr);
+    border: 1px solid var(--second-clr);
+    color: var(--second-clr);
+    transition: 0.2s ease;
+    cursor: pointer;
+}
+
+.followings-section .follow-button form .follow{
+
+    background-color: var(--third-clr);
+    border: 1px solid var(--second-clr);
+    color: var(--second-clr);
+
+}
+.followings-section .follow-button form .unfollow{
+
+    background-color: var(--main-clr);
+    border: 1px solid var(--second-clr);
+    color: var(--second-clr);
+
+}
+
 

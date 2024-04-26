@@ -96,7 +96,7 @@ class PostController extends Controller
         $user = auth()->user();
         $followingsIDs = $user->followings()->pluck('user_id');
         $posts = Post::whereIn('user_id', $followingsIDs)->orderBy('created_at', 'desc')->get();
-        return view('content.following', compact('posts'));
+        return view('content.following-feed', compact('posts'));
     }
 
 }
