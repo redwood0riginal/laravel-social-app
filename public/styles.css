@@ -33,15 +33,14 @@ a {
 
 /* Firefox */
 * {
-    scrollbar-width: thin;
-    scrollbar-color: var(--third-clr);
+    scrollbar-color: grey;
     scroll-behavior: smooth;
 }
 
 /* Chrome, Edge and Safari */
 *::-webkit-scrollbar {
-    width: 12px;
-    width: 12px;
+    width: 10px;
+
 }
 
 *::-webkit-scrollbar-track {
@@ -51,7 +50,7 @@ a {
 
 *::-webkit-scrollbar-thumb {
     border-radius: 80px;
-    background-color: var(--third-clr);
+    background-color: grey;
     border: 1.5px solid #fff;
 }
 
@@ -625,6 +624,10 @@ input:-webkit-autofill:active {
     margin-top: 5px;
 }
 
+.right-bar #search_list::-webkit-scrollbar {
+    width: 0px;
+
+}
 
 .right-bar #search_list .sidebar-profile{
     padding: 10px;
@@ -638,6 +641,24 @@ input:-webkit-autofill:active {
     top: 0px;
 }
 
+.right-bar #search_list .sidebar-profile .name{
+    color: var(--second-clr);
+}
+
+.right-bar #search_list .no-results{
+    margin: 0 auto;
+    margin-top: 80px;
+    font-size: 25px;
+}
+
+.right-bar #search_list .no-results span{
+    color: var(--third-clr);
+}
+
+.right-bar #search_list .no-results p{
+    color: grey;
+    font-size: 18px;
+}
 /* profile page styles */
 
 .profile-section {

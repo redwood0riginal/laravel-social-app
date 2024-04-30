@@ -81,7 +81,7 @@
         var query = $(this).val();
         if (query.trim() !== '') {
             $.ajax({
-                url: "search",
+                url: "/search",
                 type: "GET",
                 data: { 'search': query },
                 success: function(data) {

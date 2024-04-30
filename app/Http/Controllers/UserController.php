@@ -155,19 +155,20 @@ class UserController extends Controller
     if (count($data) > 0) {
         foreach ($data as $row) {
             $output .= '
+
             <div class="sidebar-profile">
-                <img src="'.$row->profile.'" alt="">
+                <a href="'.route('profile.show',$row->id).'"><img src="'.asset($row->profile).'" alt=""></a>
                 <div class="sidebar-profile-info">
-                    <p class="name">'.$row->full_name.'</p>
-                    <p class="username">'.$row->username.'</p>
+                <a href="'.route('profile.show',$row->id).'"><p class="name">'.$row->full_name.'</p></a>
+                <a href="'.route('profile.show',$row->id).'"><p class="username">'.$row->username.'</p></a>
                 </div>
              </div>
             ';
         }
     } else {
-        $output .= 'No results';
+        $output .= '<div class="no-results">No results for <span>"'.$searchQuery.'"</span> <br> <p>Try searching for something else</p> </div>';
     }
 
     return response()->json($output);
-}   
+}
 }
