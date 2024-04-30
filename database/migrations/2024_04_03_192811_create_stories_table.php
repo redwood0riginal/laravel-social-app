@@ -16,8 +16,6 @@ return new class extends Migration
             $table->foreignId("user_id")->constrained()->cascadeOnDelete();
             $table->string("story");
             $table->enum("status",["published","expired"])->default("published");
-            $table->unsignedBigInteger("likes")->default(0);
-            $table->unsignedBigInteger("comment")->default(0);
             $table->timestamps();
         });
     }

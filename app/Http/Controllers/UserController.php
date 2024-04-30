@@ -138,4 +138,36 @@ class UserController extends Controller
         $followers = $user->followers()->get();
         return view('content.followers-users', compact('followers', 'user'));
     }
+
+    public function search(Request $request)
+{
+    $searchQuery = $request->search;
+
+    if(empty($searchQuery)) {
+        return response()->json([]);
+    }
+
+    $data = User::where('username', 'like', '%' . $searchQuery . '%')
+                ->orWhere('full_name', 'like', '%' . $searchQuery . '%')
+                ->get();
+
+    $output = '';
+    if (count($data) > 0) {
+        foreach ($data as $row) {
+            $output .= '
+            <div class="sidebar-profile">
+                <img src="'.$row->profile.'" alt="">
+                <div class="sidebar-profile-info">
+                    <p class="name">'.$row->full_name.'</p>
+                    <p class="username">'.$row->username.'</p>
+                </div>
+             </div>
+            ';
+        }
+    } else {
+        $output .= 'No results';
+    }
+
+    return response()->json($output);
+}   
 }

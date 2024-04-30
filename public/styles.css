@@ -376,7 +376,7 @@ a {
 
 .post-container {
     width: 100%;
-    max-height: 700px;
+    min-height: 100px;
     padding: 10px;
     display: flex;
     flex-direction: column;
@@ -398,7 +398,11 @@ a {
 
 .post-container .post-profile .post-profile-img {
     width: 50px;
+    height: 50px;
     border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .post-container .post-profile .post-profile-name {
@@ -532,6 +536,7 @@ a {
     padding-inline: var(--inline-padding-of-input);
     display: flex;
     align-items: center;
+    justify-content: center;
 }
 
 .right-bar .search-container .search,
@@ -564,6 +569,7 @@ a {
     background: var(--active-color);
     opacity: 0;
     visibility: hidden;
+    margin-top: 0;
 }
 
 .right-bar .search-container .input {
@@ -602,6 +608,34 @@ input:-webkit-autofill:focus,
 input:-webkit-autofill:active {
     -webkit-transition: "color 9999s ease-out, background-color 9999s ease-out";
     -webkit-transition-delay: 9999s;
+}
+
+.right-bar #search_list{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    overflow-y: scroll;
+    box-shadow: -1px 1px 5px -1px rgba(112, 112, 112, 0.75);
+    height: 400px;
+    width: 300px;
+    background-color: var(--main-clr);
+    border-radius: 15px;
+    margin-top: 5px;
+}
+
+
+.right-bar #search_list .sidebar-profile{
+    padding: 10px;
+    width: 250px;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border-radius: 50px;
+    margin-left: 0px;
+    top: 0px;
 }
 
 /* profile page styles */
@@ -704,7 +738,7 @@ input:-webkit-autofill:active {
 
 .user-profile-container .profile-image img {
     width: 100%;
-    height: auto;
+    height: 100%;
 }
 
 .user-profile-container .edit-profile, .follow-profile {
@@ -1032,6 +1066,7 @@ input:-webkit-autofill:active {
 
 .single-post .comments .post-container{
     padding-left: 80px;
+    min-height: 70px;
 }
 
 

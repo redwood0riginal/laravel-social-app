@@ -8,7 +8,7 @@
         <div class="form-contro">
             <a href="/profile/{{ auth()->id() }}">
                 <div class="form-img">
-                    <img src="{{ auth()->user()->profile }}" alt="">
+                    <img src="{{ asset(auth()->user()->profile) }}" alt="">
                 </div>
             </a>
             <div class="form-inputs">

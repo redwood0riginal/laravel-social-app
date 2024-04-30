@@ -13,7 +13,7 @@
                 <div class="followings-info">
                     <a href="{{route('profile.show', $follower->id)}}">
                         <div class="followings-profile">
-                            <img src="{{ $follower->profile }}" alt="">
+                            <img src="{{ asset($follower->profile) }}" alt="">
                         </div>
                     </a>
                     <div class="followings-info-text">
@@ -29,7 +29,7 @@
 
                 @if (auth()->id()!= $follower->id)
                 <div class="follow-button">
-                    @if ($follower->follows($user))
+                    @if ($user->follows($follower))
                         <form action="{{ route('user.unfollow', $follower->id) }}" method="POST">
                             @csrf
                             <button type="submit" class="unfollow">Unfollow</button>

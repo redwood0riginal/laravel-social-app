@@ -65,9 +65,8 @@
                     </div>
                 </div>
                 <div class="follow">
-                    <div class="following-list"><a href=""><span>{{ $user->followings->count() }} </span>Following</a></div>
-                    <div class="followers-list"><a href=""><span>{{ $user->followers->count() }} </span>Followers</a></div>
-                </div>
+                    <div class="following-list"><a href="{{ route('profile.followings', $user->id) }}"><span>{{ $user->followings->count() }} </span>Following</a></div>
+                    <div class="followers-list"><a href="{{ route('profile.followers', $user->id) }}"><span>{{ $user->followers->count() }} </span>Followers</a></div>                </div>
             </div>
         </div>
 

@@ -2,7 +2,7 @@
         <div class="search-container">
             <form class="form">
                 <label for="search">
-                    <input class="input" type="text" required="" placeholder="Search" id="search">
+                    <input class="input" name="search" type="text" required="" placeholder="Search" id="search" autocomplete="off">
                     <div class="fancy-bg"></div>
                     <div class="search">
                         <svg viewBox="0 0 24 24" aria-hidden="true" class="r-14j79pv r-4qtqp9 r-yyyyoo r-1xvli5t r-dnmrzs r-4wgw6l r-f727ji r-bnwqim r-1plcrui r-lrvibr">
@@ -19,6 +19,7 @@
                 </label>
             </form>
         </div>
+        <div id="search_list" style="display: none";></div>
     </div>
 
 

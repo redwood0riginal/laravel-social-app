@@ -34,7 +34,10 @@
 
     @include('components.rightbar')
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
     <script>
+        // like script functionality
         const forms = document.querySelectorAll('#form-js');
 
         forms.forEach(form => {
@@ -66,9 +69,31 @@
             });
         });
 
+    // return script
         function goBack() {
         window.history.back();
     }
+
+    // search script functionality
+
+    $(document).ready(function() {
+    $('#search').on('keyup', function () {
+        var query = $(this).val();
+        if (query.trim() !== '') {
+            $.ajax({
+                url: "search",
+                type: "GET",
+                data: { 'search': query },
+                success: function(data) {
+                    $('#search_list').html(data);
+                    $('#search_list').show(); // Show search list container
+                }
+            });
+        } else {
+            $('#search_list').hide(); // Hide search list container if query is empty
+        }
+    });
+});
     </script>
 </body>
 

@@ -1,6 +1,6 @@
 <div class="sidebar">
     <ul class="sidebar-list">
-        <a href=""><img src="logo.png" alt=""></a>
+        <a href=""><img src={{asset("logo.png")}} alt=""></a>
         <li><a href="/"><i class="fa-solid fa-house"></i>
                 <p>Home</p>
             </a></li>

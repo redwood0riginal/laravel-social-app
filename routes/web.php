@@ -49,5 +49,7 @@ Route::post('users/{user}/unfollow',[FollowerController::class, 'unfollow'])->mi
 Route::post('posts/{post}/comments',[CommentController::class, 'store'])->middleware('mustBeLogedIn')->name('posts.comment.store');
 
 // likes related routes
-
 Route::post('/like',[PostController::class, 'like'])->middleware('mustBeLogedIn')->name('posts.like');
+
+// search related routes
+Route::get('/search',[UserController::class, 'search']);
