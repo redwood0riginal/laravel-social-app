@@ -125,7 +125,7 @@ class UserController extends Controller
         // Update user profile
         $user->update($formFields);
 
-        return redirect('/profile/' . $user->id)->with('success', 'Profile successfully updated');
+        return redirect()->route('profile.show',$user->id)->with('success', 'Profile successfully updated');
     }
 
 
@@ -162,7 +162,7 @@ class UserController extends Controller
                 <a href="'.route('profile.show',$row->id).'"><p class="name">'.$row->full_name.'</p></a>
                 <a href="'.route('profile.show',$row->id).'"><p class="username">'.$row->username.'</p></a>
                 </div>
-             </div>
+            </div>
             ';
         }
     } else {

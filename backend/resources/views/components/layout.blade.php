@@ -90,9 +90,11 @@
                 }
             });
         } else {
-            $('#search_list').hide(); // Hide search list container if query is empty
+            $('#search_list').hide();
+            // Hide search list container if query is empty
         }
     });
+    $('.close-btn').click(function(){$('#search_list').hide()})
 });
     </script>
 </body>

@@ -40,7 +40,6 @@ a {
 /* Chrome, Edge and Safari */
 *::-webkit-scrollbar {
     width: 10px;
-
 }
 
 *::-webkit-scrollbar-track {
@@ -718,7 +717,7 @@ input:-webkit-autofill:active {
 
 .user-profile-container {
     width: 100%;
-    height: 50vh;
+    min-height: 40vh;
     margin-bottom: 10px;
 }
 
@@ -822,7 +821,7 @@ input:-webkit-autofill:active {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    gap: 10px;
+    gap: 5px;
     padding-left: 20px;
 }
 
