@@ -55,7 +55,7 @@
                     @if ($user->birthdate)
                         <div class="birthdate"><i class="fa-solid fa-cake-candles"></i>
                             <p>Born
-                                {{$user->id = auth()->id() ? ($user->birthdate ? \Carbon\Carbon::parse($user->birthdate)->format('M d Y') : '') : ($user->birthdate ? \Carbon\Carbon::parse($user->birthdate)->format('M d') : '') }}
+                                {{$user->id === auth()->id() ? ($user->birthdate ? \Carbon\Carbon::parse($user->birthdate)->format('M d Y') : '') : ($user->birthdate ? \Carbon\Carbon::parse($user->birthdate)->format('M d') : '') }}
                             </p>
                         </div>
                     @endif
